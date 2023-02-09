@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Card game</title>
+        <link rel="stylesheet" href="First Website.css">
+        <style>
+            #deck {
+        display: inline-block;
+        border: 1px solid black;
+        padding: 10px;
+        background-color: lightgray;
+        text-align: center;
+        font-size: 24px;
+        margin-top: 20px;
+      }
+        </style>
+
+        <body>
+            <!--Headings-->
+            <h1>Nice to meet you</h1>
+            <h2>Let's try this card game!</h2>
+            <div id="deck"></div>
+    <button id="draw-button">抽取一张牌</button>           
+        </body>
+        <script>
+            const suits = ['♠️', '♣️', '❤️', '♦️'];
+      const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+      let deck = [];
+  
+      for (const suit of suits) {
+        for (const rank of ranks) {
+          deck.push(rank + suit);
+        }
+      }
+  
+      const deckEl = document.getElementById('deck');
+      const drawButtonEl = document.getElementById('draw-button');
+  
+      drawButtonEl.addEventListener('click', () => {
+        if (deck.length === 0) {
+          deckEl.innerHTML = '牌已经取完了';
+        } else {
+          const index = Math.floor(Math.random() * deck.length);
+          const card = deck[index];
+          deckEl.innerHTML = card;
+          deck.splice(index, 1);
+        }
+      });
+        </script>
+    </head>
+</html>
